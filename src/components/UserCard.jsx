@@ -5,18 +5,29 @@ import { selectUserId } from '../features/userIdSlice';
 export default function UserCard() {
   const userId = useSelector(selectUserId);
   const [currUser, setCurrUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (userId) {
+      setLoading(true)
       fetch('https://reqres.in/api/users/' + userId)
         .then((res) => res.json())
         .then((data) => setCurrUser(data.data));
+      setLoading(false);
     }
   }, [userId]);
 
+  if (loading) {
+    return (
+      <div className="usercard">
+        <h3>Loading...</h3>
+      </div>
+    )
+  }
+
   return (
     <div className='usercard'>
-      {userId && currUser ? (
+      {currUser ? (
         <div className='content'>
           <img src={currUser.avatar} alt='' />
           <div>

@@ -1,10 +1,10 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
-import { selectUsers, setUsers } from './features/usersSlice';
 import UserButton from './components/UserButton';
+import { selectUsers, setUsers } from './features/usersSlice';
 
-const UserCard = React.lazy(() => import('./components/UserCard'));
+import UserCard from './components/UserCard';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,9 +24,7 @@ function App() {
 
   return (
     <div className='app'>
-      <Suspense fallback={<p>Loaading ..</p>}>
         <UserCard />
-      </Suspense>
       <div id='buttons-list'>
         {users.map((item, i) => {
           return <UserButton key={item.id} userId={item.id} title={i + 1} />;
