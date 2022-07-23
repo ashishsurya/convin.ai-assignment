@@ -1,0 +1,36 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.usercard {
+  width: 80%;
+  max-width: 600px;
+  height: 300px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img {
+      border-radius: 50%;
+    }
+  }
+}
+
+button {
+  padding: 12px;
+  margin: 12px;
+  cursor: pointer;
+  font-family: monospace;
+}
+
